@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <style>
+        body {
+            margin: 0; /* Eliminar márgenes del body */
+            overflow: hidden; /* Ocultar las barras de desplazamiento del body */
+        }
+        .iframe-container {
+            width: 100vw; /* Ancho completo de la ventana */
+            height: 100vh; /* Alto completo de la ventana */
+            display: flex;
+            justify-content: center; /* Centrar horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+        }
+        iframe {
+            width: 100%; /* Ancho completo del contenedor */
+            height: 100%; /* Alto completo del contenedor */
+            border: none; /* Sin borde */
+            overflow: hidden; /* Ocultar las barras de desplazamiento del iframe */
+        }
+    </style>
+</head>
+<body>
+
+<div class="iframe-container">
+    <!-- Iframe para insertar el contador -->
+    <iframe src="contador.html"></iframe>
+</div>
+
+</body>
+</html>

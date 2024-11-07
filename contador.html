@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador</title>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet"> <!-- Importar fuente Caveat -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4; /* Fondo de la página */
+        }
+        .countdown {
+            text-align: center;
+            background: rgba(255, 255, 255, 0); /* Fondo transparente */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+        }
+        .time {
+            font-size: 3em; /* Tamaño de los números */
+            margin: 10px 0;
+            color: blue; /* Color de los números */
+            font-family: 'Caveat', cursive; /* Fuente Caveat para los números */
+        }
+        .label {
+            font-family: 'Caveat', cursive; /* Fuente Caveat para las etiquetas */
+            color: blue; /* Color azul para las etiquetas */
+            font-size: 1.5em; /* Tamaño de las etiquetas */
+        }
+        .time-container {
+            display: inline-block; /* Permitir que cada número y su etiqueta se alineen verticalmente */
+            margin: 0 20px; /* Espaciado entre los contadores */
+        }
+    </style>
+</head>
+<body>
+
+<div class="countdown">
+    <div class="time-container">
+        <div class="time" id="days"></div>
+        <div class="label">DÍAS</div> <!-- Palabra completa con mayúscula -->
+    </div>
+    <div class="time-container">
+        <div class="time" id="hours"></div>
+        <div class="label">HORAS</div> <!-- Palabra completa con mayúscula -->
+    </div>
+    <div class="time-container">
+        <div class="time" id="minutes"></div>
+        <div class="label">MINUTOS</div> <!-- Palabra completa con mayúscula -->
+    </div>
+    <div class="time-container">
+        <div class="time" id="seconds"></div>
+        <div class="label">SEGUNDOS</div> <!-- Palabra completa con mayúscula -->
+    </div>
+</div>
+
+<script>
+    // Fecha de cuenta regresiva (año, mes -1, día, hora, minuto, segundo)
+    const countdownDate = new Date("2024-12-30T17:00:00").getTime(); // Cambia aquí la fecha
+
+    const timer = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        // Cálculos para días, horas, minutos y segundos
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Mostrar el resultado en los elementos correspondientes
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("hours").innerHTML = hours;
+        document.getElementById("minutes").innerHTML = minutes;
+        document.getElementById("seconds").innerHTML = seconds;
+
+        // Si la cuenta regresiva termina
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById("days").innerHTML = "0";
+            document.getElementById("hours").innerHTML = "0";
+            document.getElementById("minutes").innerHTML = "0";
+            document.getElementById("seconds").innerHTML = "0";
+            alert("¡La cuenta ha terminado!");
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
